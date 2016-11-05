@@ -14,6 +14,25 @@ import {
 
 export default class CoffeeFinder extends Component {
 
+  state = {
+    position: 'unknown'
+  };
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+
+      (position) => {
+        this.setState({position});
+        console.log("position after setState: ", this.state.position)
+      },
+      
+      (error) => alert(error),
+
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+
+    );
+  }
+
   render() {
     return (
       <View style={styles.container}>
