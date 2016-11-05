@@ -9,7 +9,8 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableOpacity
 } from 'react-native';
 
 export default class CoffeeFinder extends Component {
@@ -33,6 +34,10 @@ export default class CoffeeFinder extends Component {
     );
   }
 
+  fetchData() {
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -40,6 +45,13 @@ export default class CoffeeFinder extends Component {
         <Text style={styles.welcome}>
           Coffee Finder
         </Text>
+
+
+        <TouchableOpacity style={{borderRadius: 7,padding: 10, backgroundColor: 'rgb(37, 160, 205)'}} onPress={this.fetchData.bind(this)}> 
+          <Text style={{fontSize: 15}}>
+            Find Coffee!
+          </Text>
+        </TouchableOpacity>
 
       </View>
     );
