@@ -20,6 +20,7 @@ export default class CoffeeFinder extends Component {
     position: 'unknown'
   };
 
+
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
 
@@ -36,7 +37,27 @@ export default class CoffeeFinder extends Component {
   }
 
   fetchData() {
+    var lat = this.state.position.coords.latitude;
+    var long = this.state.position.coords.longitude;
+    var latlong = "ll=" + String(lat) + "," + String(long)
+    var oauth = new OAuthSimple(consumerKey, tokenSecret)
+    var consumerKey = "***"
+    var consumerSecret = "***"
+    var tokenSecret = "***"
+    var token = "***"
 
+
+    var request = oauth.sign({
+      action: "GET",
+      path: "https://api.yelp.com/v2/search",
+      parameters: "term=coffee&" + latlong,
+      signatures: {api_key: consumerKey, shared_secret: consumerSecret, access_token: token, access_secret: tokenSecret}      
+    })
+
+    fetch(request.signed_url, {method: "GET"})
+      .then((response) => {return response.json()})
+        .then((data) => console.log(data))
+          .catch((error) => console.log('error: ', error))
   }
 
   render() {
