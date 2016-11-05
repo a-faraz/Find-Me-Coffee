@@ -1,0 +1,3 @@
+rootProject.name = 'CoffeeFinder'
+
+include ':app'
