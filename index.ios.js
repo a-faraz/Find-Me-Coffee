@@ -4,6 +4,7 @@
  * @flow
  */
 
+import OAuthSimple from 'oauthsimple';
 import React, { Component } from 'react';
 import {
   AppRegistry,
