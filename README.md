@@ -1,7 +1,7 @@
 # Find-Me-Coffee
 React Native iOS app that uses Yelp's API and mobile geolocation to locate nearby coffee shops.
 
-### Tech Stack
+### Tools
 - react-native
 - app navigator
 - geolocation
