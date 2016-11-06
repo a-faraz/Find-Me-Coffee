@@ -45,6 +45,8 @@ class Search extends Component {
     var tokenSecret = "***"
     var token = "***"
 
+    var nav = this.props.navigator
+
     var request = oauth.sign({
       action: "GET",
       path: "https://api.yelp.com/v2/search",
@@ -53,8 +55,15 @@ class Search extends Component {
     })
 
     fetch(request.signed_url, {method: "GET"})
-      .then((response) => {return response.json()})
-        .then((data) => console.log(data))
+      .then((response) => {
+        return response.json()
+      })
+        .then((data) => {
+          nav.push({
+            ident: "Results",
+            data: data
+          })
+        })
           .catch((error) => console.log('error: ', error))
   }
 
