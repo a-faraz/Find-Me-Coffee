@@ -39,7 +39,6 @@ class Search extends Component {
     var lat = this.state.position.coords.latitude;
     var long = this.state.position.coords.longitude;
     var latlong = "ll=" + String(lat) + "," + String(long)
-    var oauth = new OAuthSimple(consumerKey, tokenSecret)
     var consumerKey = "***"
     var consumerSecret = "***"
     var tokenSecret = "***"
@@ -47,6 +46,7 @@ class Search extends Component {
 
     var nav = this.props.navigator
 
+    var oauth = new OAuthSimple(consumerKey, tokenSecret)
     var request = oauth.sign({
       action: "GET",
       path: "https://api.yelp.com/v2/search",
